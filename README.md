@@ -1,70 +1,55 @@
-# Getting Started with Create React App
+# Auctioneer's Hub · NFT marketplace
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+The marketplace side of **Auctioneer's Hub**, where artists mint their work as NFTs and collectors buy them at a fixed price, in timed auctions or through open offers.
 
-## Available Scripts
+Final-year project, BS Computer Science, GC University Lahore (2023).
 
-In the project directory, you can run:
+| Part | Repository |
+|---|---|
+| API server | [socialApp-server](https://github.com/m-usamashoaib/socialApp-server) |
+| Social app | [socialApp-client](https://github.com/m-usamashoaib/socialApp-client) |
+| **NFT marketplace** (this repo) | React · Recoil |
 
-### `npm start`
+**👤 Built by** [Muhammad Usama Shoaib](https://m-usamashoaib.github.io) (most of the API and both front-ends) in a two-person team.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+> **Credits:** the visual design is based on the *Gigaland* NFT marketplace HTML template, which I converted to React and connected to our API. The **MetaMask wallet flow** was built by my teammate and is not part of this repository; the wallet page here is the UI only.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Features
 
-### `npm test`
+- **Home:** featured NFTs, live auctions, collections and top collectors, all loaded from the API
+- **Create NFTs:** single items or **multiple copies (editions)**, with image upload, collection, description and **royalties** (up to 70%)
+- **Three ways to sell**
+  - **Fixed price:** buy instantly
+  - **Timed auction:** minimum bid, start and end dates, with a live **countdown**; the server hands the NFT to the highest bidder when the auction ends
+  - **Open for offers:** collectors place bids at any time
+- **Item details:** creator, owners, price or current bids, and bid history
+- **Collections:** browse any collection, or your own
+- **Active bids** and **saved** NFTs
+- Shared login with the [social app](https://github.com/m-usamashoaib/socialApp-client): the same account works in both
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Tech stack
 
-### `npm run build`
+React 18 · React Router · Recoil (state) · Axios · Swiper · React Toastify · js-cookie
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Run locally
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. Start the [API server](https://github.com/m-usamashoaib/socialApp-server) on **port 4000**. This app proxies `/api/v1` calls to it (see `proxy` in `package.json`).
+2. Run this app on **port 3001**, since the social app links to that address:
+   ```bash
+   npm install
+   # macOS / Linux
+   PORT=3001 npm start
+   # Windows (PowerShell)
+   $env:PORT=3001; npm start
+   ```
+3. Open http://localhost:3001 and log in with an account created in the social app.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## What I'd improve today
 
-### `npm run eject`
+- Settle purchases and bids on-chain through the wallet, so ownership is verifiable
+- Show the remaining copies and the full bid history more prominently on item pages
+- Replace the template's jQuery plugins and hot-linked images with local React components and assets
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## License
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+MIT
